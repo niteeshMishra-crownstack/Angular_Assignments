@@ -1,0 +1,29 @@
+<!-- <h1>Angular Interpolation</h1>
+<h5>{{name}}</h5>
+<h2>{{title}}</h2>
+
+<h3>{{getName()}}</h3>
+<h3>{{obj.name}}</h3>
+<h5>{{arr}}</h5>
+<h5>{{arr.length}}</h5>
+Assignment operator would not work  -->
+<!-- <h3>{{a=20}}</h3> -->
+<h3>{{10+60}}</h3>
+<app-user></app-user>
+<app-login></app-login>
+<!--In angular , a module is a mechanism to group components,directives,pipes and services that are related-->
+<!--Module is collection of components-->
+<!-- 
+<button (click)="getName()">Get My Name</button> -->
+<h1>Important events in angular </h1>
+<button (click)="myEvent('this is click event')">click here</button>
+<br>
+<br>
+<input type="text" #box (keyup)="myEvent(box.value)"><br><br>
+<!--keyup hone me value milegi-->
+
+<input type="text" #box (blur)="myEvent('blur event')">
+
+<div (mouseover)="myEvent('mouse over event')" style="background-color: brown;" (click)="myEvent('this is click event')">mouse event</div>
+
+<h1 (mouseleave)="myEvent('mouse leave event')" style="background-color:skyblue;">mouse leave event</h1>
