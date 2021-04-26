@@ -1,3 +1,4 @@
+<app-header></app-header>
 <!-- <h1>Angular Interpolation</h1>
 <h5>{{name}}</h5>
 <h2>{{title}}</h2>
@@ -11,6 +12,8 @@ Assignment operator would not work  -->
 <h3>{{10+60}}</h3>
 <app-user></app-user>
 <app-login></app-login>
+
+
 <!--In angular , a module is a mechanism to group components,directives,pipes and services that are related-->
 <!--Module is collection of components-->
 <!-- 
@@ -27,3 +30,122 @@ Assignment operator would not work  -->
 <div (mouseover)="myEvent('mouse over event')" style="background-color: brown;" (click)="myEvent('this is click event')">mouse event</div>
 
 <h1 (mouseleave)="myEvent('mouse leave event')" style="background-color:skyblue;">mouse leave event</h1>
+
+<!-- <h1>Get text box value in Angular</h1>
+<input type="text #box">
+<button (click)="getval(box.value)">Get value</button>
+<h2>{{currentVal}}</h2> -->
+
+<h1>Property Binding in angular</h1>
+<button type="button" [disabled]="buttonDisabled">Click me</button><br><br>
+<input type="text" [disabled]="disabledBox" [value]="person"><br><br>
+<!--property binding-->
+<input type="text" disabled={{disabledBox}} value={{person}}>
+<!--string interpolation-->
+<button (click)="enableBox()">Enable text fields</button>
+
+<!--property binding can handle the attribute whereas string interpolation cant-->
+
+<!--conditional statement-->
+<!--make if condition
+    make else condition
+    make condition with string
+    make else if condition
+    make condition with property binding
+
+
+-->
+
+<h1 style="color: cyan;">condition in Angular</h1>
+<!--you can check string value too
+ <h1 *ngIf = "show=='yes' then ifBlock else elseBlock"></h1>
+
+ <ng-template #ifBlock>
+     <h1>if block </h1>
+ </ng-template>
+
+ <ng-template #elseBlock>
+     <h1>else block </h1>
+ </ng-template>
+
+-->
+<h1 *ngIf="show else elseBlock">if block</h1>
+<ng-template #elseBlock>
+    <h1>else block</h1>
+</ng-template>
+
+<ng-template [ngIf]="color =='red'">
+    <h1>color red</h1>
+</ng-template>
+<ng-template [ngIf]="color =='green'">
+    <h1>color green</h1>
+</ng-template>
+<ng-template [ngIf]="color =='black'">
+    <h1>color black</h1>
+</ng-template>
+
+
+<!--switch cases in Angular-->
+<h1 style="color: yellowgreen;">switch case in angular </h1>
+<div [ngSwitch]="myColor">
+    <h2 style="color: red;" *ngSwitchCase="'red'">red color</h2>
+    <h2 style="color: blue;" *ngSwitchCase="'blue'">blue color</h2>
+    <h2 style="color: green" *ngSwitchCase="'green'">green color</h2>
+    <h2 style="color:yellow" *ngSwitchCase="'yellow'">yellow color</h2>
+    <h2 style="color:white" *ngSwitchDefault>white color</h2>
+</div>
+
+<!--for loop -->
+<!-- <h4 *ngFor="let item of data">{{item.name}}</h4> -->
+<h1 style="color: red;">For loop in angular</h1>
+<table border="1">
+    <tr>
+        <td>name</td>
+        <td>age</td>
+        <td>email</td>
+    </tr>
+    <tr *ngFor="let item of data">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.email}}</td>
+
+
+    </tr>
+</table>
+
+<!--Angular foms
+never forget to  import form module in module file
+we will make a form 
+we will make function and get value from form
+
+
+-->
+<h1 style="color: darkcyan;">Angular Forms</h1>
+
+<form action="" #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
+    <input type="text" ngModel name="user" placeholder="Enter user name"><br><br>
+    <input type="number" ngModel name="age" placeholder="Enter user age"><br><br>
+    <input type="text" ngModel name="address" placeholder="Enter user address"><br><br>
+    <button>Get user value</button>
+
+</form>
+
+<!--style binding
+ difference between normal style and style binding
+ add dynamic style
+ update style with button click
+ add conditional style.
+-->
+
+<h1 style="color: cadetblue;">Style binding in Angular</h1>
+<h1 style="color: red;">COLOR Given through inline css</h1>
+<!---->
+<h1 [style.color]="'orange'"> Color throygh Style binding</h1>
+<h1 [style.color]="myCustomColor"> color given through Dynamic style</h1>
+<button (click)="updateColor()">Update color </button><br> <br>
+
+<h3>color changing based on condition</h3>
+
+<h1 [style.color]="err ? 'red':'gren'"> conditional color style</h1>
+
+<app-footer></app-footer>
