@@ -1,0 +1,114 @@
+<!--command to add bootstrap in angular project-->
+<!--ng add @ng-bootstrap/ng-bootstrap-->
+<h1>app works</h1><br><br>
+
+<h1 style="color: coral;">Routing Components</h1>
+<br><br>
+<a routerLink="user">user</a><br><br>
+<a routerLink="admin">admin</a><br><br>
+<a routerLink="about">about</a><br><br>
+<a routerLink="login">login</a><br><br>
+
+<router-outlet></router-outlet>
+<p>
+    <ngb-alert [dismissible]="false">
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </ngb-alert>
+</p>
+
+<!--material UI in bootstrap-->
+
+<!--
+what is material ui 
+install material UI
+Use some component with example
+such as slider and button
+
+Material UI provides responsive website and great UI for input fields
+Material UI is similar to bootstrap but more powerfull than bootstrap. Material UI has been used by Angular itself.
+-->
+
+<button mat-button color="primary">Primary</button>
+<div class="example-label">Raised</div>
+<div class="example-button-row">
+    <button mat-raised-button>Basic</button>
+    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="accent">Accent</button>
+    <button mat-raised-button color="warn">Warn</button>
+    <button mat-raised-button disabled>Disabled</button>
+    <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+</div> <br><br>
+
+<mat-slider min="1" max="10"></mat-slider>
+
+<!--pass data parent to child component
+
+  First we will make a new user component
+  make it child of app component
+  pass data from app component to child component
+  Display data in child componnt
+-->
+<!-- <app-users [hero]="data"></app-users> -->
+
+<div *ngFor="let data of users">
+    <app-users [hero]="data"></app-users>
+</div>
+
+<h1>Send data from child to parent component</h1>
+<!-- <app-user (parentFunction)="parentFunction($event)"></app-user> -->
+
+<!--pipes in Angular-->
+
+<h1 style="color: orange;">Pipes in angular</h1>
+<h2>{{name|uppercase}}</h2>
+<h2>{{name|titlecase}}</h2>
+<h2>{{name|lowercase}}</h2>
+
+<h3>{{today|date}}</h3>
+<h3>{{today|date:'fullDate'}}</h3>
+
+<h3>{{str|slice:2:5}}</h3>
+<h3>{{money|currency:'USD'}}</h3>
+
+<!--custom directive
+you can use the directive with html not with ts file
+directives or used to modify Dom element
+Custom directive
+-->
+
+<h1 style="color:crimson">Custom Directive in Angular</h1>
+<h1>Normal Heading</h1>
+<h1 appCustomStyle>Custom Heading</h1>
+
+<!--Service
+Services are basically used for sharing data between one or more component
+How to make a service 
+How to use a service
+Example
+Services are free in Angular means there is no such restriction like you can use only in one component or one module . You can use it throughly in your angular project.
+
+-->
+<h1 style="color: darkorange;">Service in Angular</h1>
+<h2>{{userName}}</h2>
+
+<!--
+
+  what is API 
+  how to make service
+  How to fetch API data in service
+  Import it in component
+  Get Data in Component
+-->
+<h1 style="color: darkorchid;">API in Angular</h1>
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>title</td>
+        <td>userId</td>
+    </tr>
+    <tr *ngFor="let item of data ">
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.userId}}</td>
+    </tr>
+</table>
