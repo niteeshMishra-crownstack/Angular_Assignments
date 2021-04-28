@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 // import {MyServiceService} from './my-service.service';
 import { ApiServiceService } from './api-service.service'
+
+interface dataType
+{
+  name:string,
+  id:number,
+  indian:boolean
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -57,4 +65,15 @@ export class AppComponent {
     address :"goa"
   },
 ]
+giveData()
+{
+  const data:dataType = 
+  {
+    name:"niteesh",
+    id:10,
+    indian:true
+  }
+  return data;
+}
+
 }

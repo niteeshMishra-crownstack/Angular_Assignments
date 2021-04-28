@@ -14,6 +14,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CustomStyleDirective } from './custom-style.directive';
 import {HttpClientModule} from '@angular/common/http';
 import { ApiServiceService } from './api-service.service';
+
+import { AdminDashboardModule } from './admin-dashboard/admin-dashboard.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,9 @@ import { ApiServiceService } from './api-service.service';
     UserComponent,
     AdminComponent,
     PageNotFoundComponent,
-    CustomStyleDirective
+    CustomStyleDirective,
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import { ApiServiceService } from './api-service.service';
     BrowserAnimationsModule,
     MatButtonModule,
     MatSliderModule,
-    HttpClientModule
+    HttpClientModule,
+    AdminDashboardModule
+
 
 
     

@@ -1,0 +1,21 @@
+<!--Lazy loading
+so why we need Lazy loading. Suppose we have 100s of routes and if they defined in app-routing-module.ts first they all will load and this will hamper the website or application performance
+
+never import or register that module in app-module.ts whoms component you want should follow lazy loading
+-->
+<h1 style="color: chartreuse;">Lazy Loading in angular</h1>
+<h2>Admin links</h2>
+<ul>
+    <li><a routerLink="admin/login">Login</a></li>
+    <li><a routerLink="admin/list">List</a></li>
+</ul>
+<h2>User links</h2>
+<ul>
+    <li><a routerLink="user/login">Login</a></li>
+    <li><a routerLink="user/list">List</a></li>
+</ul>
+<router-outlet></router-outlet>
+
+<h1 style="color: coral;">Lazy Loading Component</h1>
+<button (click)="loadAdmin()">Admin load</button>
+<button (click)="loadUser()">User load</button>
