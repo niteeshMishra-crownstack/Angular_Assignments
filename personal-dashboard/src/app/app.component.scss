@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-image: url("https://images.unsplash.com/photo-1619105134136-c6cd9449c045?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max");
+    background-image: url("https://images.unsplash.com/photo-1601885823844-051c9ca3c5a9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&ixlib=rb-1.2.1&q=80&w=1920");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,6 +30,7 @@
 .content-section {
     // background-color: cadetblue;
     flex-grow: 1;
+    min-height: 0;
 }
 
 .bottom-section {
