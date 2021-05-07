@@ -6,13 +6,13 @@ import { TodosComponent } from './todos/todos.component';
 
 const routes: Routes = [
   {
-    path:'bookmarks',component:BookmarksComponent
+    path:'bookmarks',component:BookmarksComponent, data:{tab:1},
   },
   {
-    path:'todos' , component:TodosComponent
+    path:'todos' , component:TodosComponent, data:{tab:2},
   },
   {
-    path: 'notes', component:NotesComponent
+    path: 'notes', component:NotesComponent, data:{tab:3},
   }
  
 ];
