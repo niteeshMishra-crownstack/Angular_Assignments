@@ -60,6 +60,7 @@ h2.is-bold {
 
 .btns-container {
     display: flex;
+    gap: 12px;
     margin-top: 20px;
     &.btns-centered {
         justify-content: center;
@@ -74,13 +75,20 @@ h2.is-bold {
     backdrop-filter: blur(20px);
 }
 
+.form-field {
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
 .textbox,
 .textarea {
     display: block;
     font-size: 18px;
     font-family: inherit;
     padding: 8px 10px;
-    margin-bottom: 20px;
     width: 100%;
     background: rgba(white, 0.9);
     border-radius: 4px;
