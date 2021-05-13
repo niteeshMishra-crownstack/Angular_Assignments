@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="jumbotron" style="width: 50%; margin: auto;" [hidden]="submitted">
+        <div>
+
+            <h1 style="text-align: center;color: aquamarine;" class=" text text-info">Super Hero Form</h1>
+            <form #superHeroForm="ngForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                    <label for="name" class=" text text-info"> Super Hero Name</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" required #name="ngModel">
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Super Hero name is required</div>
+
+                </div>
+                <div class="form-group">
+                    <label for="name" class=" text text-info">Hero Weapon</label>
+                    <select id="weapon" class="form-control" required [(ngModel)]="model.weapon" name="weapon" #weapon="ngModel">
+            <option *ngFor="let wp of weapons" [value]="wp">{{wp}}</option>
+           
+           </select>
+                    <div [hidden]="weapon.valid || weapon.pristine" class="alert alert-danger">Weapon is required</div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class=" text text-info">Speciality</label>
+                    <select id="Speciality" class="form-control" required [(ngModel)]="model.speciality" name="Speciality" #speciality="ngModel">
+            <option *ngFor="let spec of   specialities " [value]="spec">{{spec}}</option>
+           </select>
+                    <div [hidden]="speciality.valid || speciality.pristine" class="alert alert-danger">Weapon is required</div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class=" text text-info"> Real Name</label>
+                    <input type="text" class="form-control" id="realname">
+
+                </div>
+
+                <button type="submit" class="btn btn-info" [disabled]="!superHeroForm.form.valid">Submit</button>
+                <button type="button" class="btn btn-info" (click)="newSuperHero(); superHeroForm.reset()" style="margin-left: 20px;">New Super Hero</button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <div [hidden]="!submitted">
+
+        <h2>You submitted the following:</h2>
+        <div class="row">
+            <div class="col-md-2">Super Hero Name</div>
+            <div class="col-md-10 pull-left">{{ model.name }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Real Name</div>
+            <div class="col-md-10 pull-left">{{ model.realname }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Weapon</div>
+            <div class="col-md-10 pull-left">{{ model.weapon }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Speciality</div>
+            <div class="col-md-10 pull-left">{{ model.speciality }}</div>
+        </div>
+
+        <button class="btn btn-info" (click)="submitted=false">Edit</button>
+    </div>
+</div>

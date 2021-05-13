@@ -1,0 +1,146 @@
+<div class="container" style="width: 50%; margin: auto;">
+    <div class="jumbotron">
+        <h4 style="text-align: center;" class="text text-primary">Angular Reactive Forms</h4>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label for="firstname" class=" text text-primary">First Name </label>
+                <input type="text" id="firstname" class="form-control" name="firstname" formControlName="firstname">
+
+                <div *ngIf="!firstname.valid && (firstname.dirty ||firstname.touched)">
+                    <div [hidden]="!firstname.errors.required" class="text text-danger">
+                        **First Name is required
+                    </div>
+                    <div [hidden]="!firstname.errors.minlength" class="text text-danger">
+                        **Min Length is 3
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="lastname" class=" text text-primary">Last Name </label>
+                <input type="text" id="lastname" name="lastname" class="form-control" formControlName="lastname">
+
+                <div *ngIf="!lastname.valid && (lastname.dirty ||lastname.touched)">
+                    <div [hidden]="!lastname.errors.pattern" class="text text-danger">
+                        Only characters are allowed
+                    </div>
+                    <div [hidden]="!lastname.errors.maxLength" class="text text-danger">
+                        Max length allowed is 15
+                    </div>
+                    <div [hidden]="!lastname.errors.required" class="text text-danger">
+                        Last Name is required
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="email" class="text text-primary">Email </label>
+                <input type="text" id="email" name="email" class="form-control" formControlName="email">
+                <div *ngIf="!email.valid && (email.dirty ||email.touched)">
+                    <div [hidden]="!email.errors.required" class="text text-danger">
+                        **Email is required
+                    </div>
+                    <div [hidden]="!email.errors.email" class="text text-danger">
+                        **Invalid email id
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="gender" class="text text-primary">Geneder: </label>&nbsp;&nbsp;&nbsp;
+                <input type="radio" value="male" id="gender" name="gender" formControlName="gender">&nbsp;<span class="text text-primary">Male</span>&nbsp;&nbsp;&nbsp;
+                <input type="radio" value="female" id="gender" name="gender" formControlName="gender">&nbsp; <span class="text text-primary">Female</span>
+                <div *ngIf="!gender.valid && (gender.dirty ||gender.touched)">
+                    <div [hidden]="!gender.errors.required" class="text text-danger">
+                        **Gender is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="isMarried" class="text text-primary">Married </label>&nbsp;
+                <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
+
+                <div *ngIf="!isMarried.valid && (isMarried.dirty ||isMarried.touched)">
+                    <div [hidden]="!isMarried.errors.required" class="text text-danger">
+                        **isMarried is required
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="country" class="text text-primary">Country</label>&nbsp;
+                <select id="country" name="country" formControlName="country">
+                 <option [ngValue]="c.id" *ngFor="let c of countryList">
+                 {{c.name}}
+                </option>
+                 </select>
+                <div *ngIf="!country.valid && (country.dirty ||country.touched)">
+                    <div [hidden]="!country.errors.required" class="text text-danger">
+                        **Country is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div formGroupName="address">
+
+                <div class="form-group">
+                    <label for="city" class="text text-primary">City</label>
+                    <input type="text" class="form-control" name="city" formControlName="city">
+                    <div *ngIf="!city.valid && (city.dirty ||city.touched)">
+                        <div [hidden]="!city.errors.required" class="text text-danger">
+                            **City is required
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="street" class="text text-primary">Street</label>
+                    <input type="text" class="form-control" name="street" formControlName="street">
+                    <div *ngIf="!street.valid && (street.dirty ||street.touched)">
+                        <div [hidden]="!street.errors.required" class="text text-danger">
+                            Street is required
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="pincode" class="text text-primary">Pin Code</label>
+                    <input type="text" class="form-control" name="pincode" formControlName="pincode">
+                    <div *ngIf="!pincode.valid && (pincode.dirty ||pincode.touched)">
+                        <div [hidden]="!pincode.errors.required" class="text text-danger">
+                            Pincode is required
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div>
+                <button type="submit" [disabled]="!contactForm.valid" class="btn btn-dark">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- <div style="width: 50%; margin: auto;">
+    <h3>Form Value</h3>
+    {{contactForm.value |json}}
+</div> -->
