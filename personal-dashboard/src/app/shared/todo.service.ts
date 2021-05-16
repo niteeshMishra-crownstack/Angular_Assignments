@@ -1,16 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
+import { fromEvent, Subscription } from 'rxjs';
 import { Todo } from './todo.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoService {
+export class TodoService implements OnDestroy {
   todos:Todo[] = [
-    new Todo("This is a text"),
-    new Todo("HEY!")
+   
   ]
+
+  storageListenSub : Subscription
   constructor() {
-    
+    this.loadState()
+    this.storageListenSub= fromEvent(window,'storage').subscribe((event:StorageEvent)=>
+     {
+       if(event.key ==='todos') this.loadState()
+     })
+   }
+
+   ngOnDestroy()
+   {
+     if(this.storageListenSub) this.storageListenSub.unsubscribe()
    }
 
   getTodos()
@@ -25,6 +36,7 @@ export class TodoService {
   addTodo(todo:Todo)
   {
     this.todos.push(todo)
+    this.saveState();
   }
 
   updateTodo(id:string,updatedTodoFields:Partial<Todo>)
@@ -32,10 +44,34 @@ export class TodoService {
     const todo = this.getTodo(id)
 
     Object.assign(todo,updatedTodoFields)
+    this.saveState();
   }
   deleteTodo(id:string)
   {
     const index = this.todos.findIndex(t=>t.id===id)
     this.todos.splice(index,1)
+    this.saveState();
+  }
+  saveState()
+  {
+    //its actually saving the note in localstorage
+    localStorage.setItem('todos',JSON.stringify(this.todos))
+  }
+
+  loadState()
+  {
+    try{
+      const todosInStorage = JSON.parse(localStorage.getItem('todos'))
+      // if(!todosInStorage) return
+       this.todos.length =0;//clear the todos array
+       this.todos.push(...todosInStorage)
+    }
+    catch(e)
+    {
+      console.log("There was an error retrieving the todos from localStorage")
+      console.log(e)
+
+    }
+   
   }
 }

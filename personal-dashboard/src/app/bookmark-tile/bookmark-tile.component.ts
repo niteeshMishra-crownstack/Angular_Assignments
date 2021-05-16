@@ -9,6 +9,7 @@ import { Bookmark } from '../shared/bookmark.model';
 export class BookmarkTileComponent implements OnInit {
 @Input() bookmark : Bookmark
 tileIconSrc : string
+faviconError:boolean
   constructor() { }
 
   ngOnInit(): void {
