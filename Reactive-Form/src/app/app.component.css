@@ -1,0 +1,33 @@
+img {
+    position: absolute;
+    top: 40px;
+    left: 48%;
+    border-radius: 50%;
+}
+
+label {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+label>span {
+    color: orange;
+    font-size: 20px;
+}
+
+.bg-dark {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("../assets/DBS2.jpg");
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 800px;
+}
+
+.add-btn {
+    width: 75px;
+    margin-top: 7px;
+    margin-left: -88px;
+    padding: 6px;
+    border-radius: 10px;
+}

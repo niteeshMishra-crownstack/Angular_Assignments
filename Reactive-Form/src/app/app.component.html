@@ -1,0 +1,123 @@
+<div class="container">
+
+
+
+
+    <div class="card bg-dark text-white  mt-5">
+        <h5 class="card-header text-center">
+            <img src=".../../../assets/user-logo.jpg" alt="" width="55" height="55" class="mr-2" /> Sign Up Here
+        </h5><br>
+        <div class="card-body" style="width: 50%; margin: auto;">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="form-group  ">
+                        <label>First Name <span>**</span></label>
+                        <input formControlName="firstName" type="text" [ngClass]="{ 'is-invalid': submitted && Helper.firstName.errors }" class="form-control" />
+                        <div *ngIf="submitted && Helper.firstName.errors" class="text-warning">
+                            <div *ngIf="Helper.firstName.errors.required">
+                                First Name is Required
+                            </div>
+
+                            <div *ngIf="Helper.firstName.errors.minlength">
+                                First Name should be of minimum 3 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>  Last Name<span>**</span></label>
+                        <input [ngClass]="{ 'is-invalid': submitted && Helper.lastName.errors }" formControlName="lastName" type="text" class="form-control" />
+                        <div class="text-warning" *ngIf="submitted && Helper.lastName.errors">
+                            <div *ngIf="Helper.lastName.errors.required">
+                                Last Name is required
+                            </div>
+                            <div *ngIf="Helper.lastName.errors.maxlength">
+                                Last Name should be of minimum 10 characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>  Email<span>**</span></label>
+                    <input [ngClass]="{ 'is-invalid': submitted && Helper.email.errors }" formControlName="email" type="text" class="form-control" />
+                    <div class="text-warning" *ngIf="Helper.email.touched && Helper.email.errors">
+                        <div *ngIf="Helper.email.errors.required">Email is required</div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Phone-Number<span>**</span></label>
+                    <input [ngClass]="{ 'is-invalid': submitted && Helper.phoneNumber.errors }" formControlName="phoneNumber" type="text" class="form-control" required />
+                    <div class="text-warning" *ngIf="Helper.phoneNumber.touched && Helper.phoneNumber.errors">
+                        <div *ngIf="Helper.phoneNumber.errors.required">Phone Number is required</div>
+                        <div *ngIf="Helper.phoneNumber.errors.minlength">
+                            Phone Number must be have 10 digits
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 ml-0"></label>
+                    <button class="btn btn-warning add-btn" (click)="addAdditionalNumber()" type="button">+ADD</button>
+                </div>
+
+                <div formArrayName="addPhoneNumber" *ngFor="let addPhNum of addPhoneNumber.controls; let i=index">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"></label>
+                        <div>
+                            <input [ngClass]="{ 'is-invalid': submitted && Helper.phoneNumber.errors }" type="number" class="form-control" placeholder="Enter additional contact number" [formControlName]>
+                        </div>
+                        <div class="text-warning" *ngIf="Helper.phoneNumber.touched && Helper.phoneNumber.errors">
+                            <div *ngIf="Helper.phoneNumber.errors.required">Phone Number is required</div>
+                            <div *ngIf="Helper.phoneNumber.errors.minlength">
+                                Phone Number must have 10 digits
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label> Password <span>**</span></label>
+                        <input [ngClass]="{ 'is-invalid': submitted && Helper.password.errors }" formControlName="password" type="password" class="form-control" />
+                        <div class="text-warning" *ngIf="Helper.password.touched && Helper.password.errors">
+                            <div *ngIf="Helper.password.errors.required">
+                                Password is required
+                            </div>
+                            <div *ngIf="Helper.password.errors.minlength">
+                                Password must be at least 6 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>Confirm Password <span>**</span></label>
+                        <input [ngClass]="{
+                'is-invalid': submitted && Helper.confirmPassword.errors
+              }" formControlName="confirmPassword" type="password" class="form-control" />
+                        <div class="text-warning" *ngIf="
+                Helper.confirmPassword.touched && Helper.confirmPassword.errors
+              ">
+                            <div *ngIf="Helper.confirmPassword.errors.required">
+                                Confirm Password is required
+                            </div>
+                            <div *ngIf="Helper.confirmPassword.errors.mustMatch">Passwords must match</div>
+                        </div>
+                    </div>
+                </div><br>
+                <!-- <div class="form-group form-check">
+                    <input [ngClass]="{ 'is-invalid': submitted && Helper.isAccepted.errors }" formControlName="isAccepted" type="checkbox" id="acceptTerms" class="form-check-input" />
+                    <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label
+          >
+                   <div *ngIf="Helper.isAccepted.errors && Helper.isAccepted.touched" class="text-warning">Accept Ts & Cs is required</div>
+                   </div> -->
+                <div class="text-center">
+                    <button class="btn btn-warning btn-lg px-4 mr-3" style="margin-right: 10px;" type="submit">Register</button>
+                    <button class="btn btn-lg btn-warning" type="reset" (click)="onReset()">
+            Reset
+          </button>
+                    <p class="text white">Value: {{ userForm.value | json }}</p>
+                    <p class="text white">Value: {{ userForm.valid | json }}</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
