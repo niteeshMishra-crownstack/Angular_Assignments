@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { Bookmark } from './bookmark.model';
 import { Todo } from './todo.model';
@@ -6,7 +6,7 @@ import { Todo } from './todo.model';
 @Injectable({
   providedIn: 'root'
 })
-export class BookmarkService {
+export class BookmarkService implements OnDestroy {
    bookmarks: Bookmark[] = [
     
      
@@ -22,6 +22,11 @@ export class BookmarkService {
       //console.log("Storage event fired!")
       //console.log(event)
     })
+   }
+
+   ngOnDestroy()
+   {
+      if(this.storageListenSub) this.storageListenSub.unsubscribe()
    }
 
   getBookmarks()
