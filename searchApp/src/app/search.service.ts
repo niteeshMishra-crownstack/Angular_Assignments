@@ -8,10 +8,30 @@ import { map } from 'rxjs/operators';
 })
 export class SearchService {
 
-  constructor() { }
+  constructor( private httpClient:HttpClient) { }
 
   public baseUrl = 'https://api.github.com/search/repositories';
   public searchResults: any;
 
-  //make HTTP call to the api
+  //makes the HTTP request to get the resources and returns the response as observable;
+  public searchEntries(term: string): Observable<any> {
+    if (term === '') {
+      console.log('Not defined');
+      return of(null);
+      //return empty();
+    } else {
+      let params = { q: term };
+      return this.httpClient.get(this.baseUrl, { params }).pipe(
+        map((response) => {
+          console.log(response);
+          return (this.searchResults = response['items']);
+        })
+      );
+    }
+  }
+
+  //returns the response for the first method
+  public _searchEntries(term: string) {
+    return this.searchEntries(term);
+  }
 }
