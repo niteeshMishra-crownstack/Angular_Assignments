@@ -10,7 +10,7 @@ export class AppComponent {
   title: "Angular Reactive forms"
   contactForm :FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {//form builder is a service
  
 
     this.contactForm = this.formBuilder.group({
@@ -20,7 +20,7 @@ export class AppComponent {
       gender: ['', [Validators.required]],
       isMarried: ['', [Validators.required]],
       country: ['', [Validators.required]],
-      address: this.formBuilder.group({
+      address: this.formBuilder.group({  //nested
         city: ['', [Validators.required]],
         street: ['', [Validators.required]],
         pincode: ['', [Validators.required]],

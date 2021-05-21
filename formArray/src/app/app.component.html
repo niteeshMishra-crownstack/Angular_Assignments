@@ -1,0 +1,163 @@
+<div class="container" style="background-color:darkgrey;">
+
+    <div class="form-heading text-center">
+        <h1 class="formH">Registration Form</h1>
+        <img src="../assets/user.png" alt="" width="55" height="55" class="mr-2" />
+    </div>
+
+    <form class="form-horizontal" autocomplete="off" [formGroup]="regForm" (ngSubmit)="onSubmit()" style="width: 60% ; margin: auto;">
+        <div class="form-group">
+            <label for="name" class="control-label col-sm-2">Name</label>
+            <div>
+                <input type="text" class="form-control" placeholder="Enter name" formControlName="name" [ngClass]="{ 'is-invalid':  formValue.name.errors&&formValue.name.touched }">
+                <div *ngIf="formValue.name.errors" class="text-danger">
+                    <div *ngIf="formValue.name.errors.required && formValue.name.touched">
+                        Name is Required
+                    </div>
+
+                    <div *ngIf="formValue.name.errors.minlength">
+                        Name should be of minimum 3 characters
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="control-label col-sm-2">Email</label>
+            <div>
+                <input type="text" class="form-control" placeholder="Enter mail" formControlName="email" [ngClass]="{ 'is-invalid':  formValue.email.errors&&formValue.email.touched }">
+                <div *ngIf="formValue.email.errors" class="text-danger">
+                    <div *ngIf="formValue.email.errors.required && formValue.email.touched">
+                        Email is Required
+                    </div>
+                    <div *ngIf="formValue.email.errors.email">
+                        Please enter a valid email id
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNo" class="control-label col-sm-2">Phone No:</label>
+            <div>
+                <input type="text" class="form-control" placeholder="Enter phone number" formControlName="phoneNo" [ngClass]="{ 'is-invalid':  formValue.phoneNo.errors && formValue.phoneNo.touched }">
+                <div *ngIf="formValue.phoneNo.errors" class="text-danger">
+                    <div *ngIf="formValue.phoneNo.errors.required && formValue.phoneNo.touched">
+                        Phone-Number is required
+                    </div>
+                    <div *ngIf="formValue.phoneNo.errors.minlength">
+                        Phone-Number must have 10 digits
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name" class="control-label col-sm-2"> Marital Status</label>
+            <div>
+                <select class="form-control" formControlName="status" [ngClass]="{ 'is-invalid':  formValue.status.errors && formValue.status.touched }">
+                 <option >Select Status</option>
+                 <option value="Y">Married</option>
+                 <option value="N">Unmarried</option>
+               </select>
+                <div *ngIf="formValue.status.errors" class="text-danger">
+                    <div *ngIf="formValue.status.errors.required && formValue.status.touched">
+                        Please choose the status
+                    </div>
+
+
+                </div>
+
+            </div><br>
+        </div>
+        <div formGroupName="address">
+            <div style="color: white; font-weight: bolder; font-size: 20px;">Current Address </div>
+            <div class="form-group">
+                <label for="city" class="control-label col-sm-2">  City</label>
+                <div>
+                    <input type="text" class="form-control" placeholder="Enter city name" formControlName="city" [ngClass]="{ 'is-invalid':  formValue.address.controls.city.errors && formValue.address.controls.city.touched }">
+                    <div *ngIf="formValue.address.controls.city.errors" class="text-danger">
+                        <div *ngIf="formValue.address.controls.city.errors.required && formValue.address.controls.city.touched">
+                            city is required
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="state" class="control-label col-sm-2">  State</label>
+                <div>
+                    <input type="text" class="form-control" placeholder="Enter city name" formControlName="state" [ngClass]="{ 'is-invalid':  formValue.address.controls.state.errors && formValue.address.controls.state.touched }">
+                    <div *ngIf="formValue.address.controls.state.errors" class="text-danger">
+                        <div *ngIf="formValue.address.controls.state.errors.required && formValue.address.controls.state.touched">
+                            Please enter the state
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div>
+                <button class="btn btn-success btn-xs mt-2" (click)="addMoreAddress()" type="button">+Permanent Address</button>
+            </div>
+        </div>
+
+        <div formArrayName="moreAddress" *ngFor="let mAddr of moreAddress.controls; let i=index">
+            <div [formGroupName]="i">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 ">
+                            <span> City:</span> <input type="text" class="form-control" placeholder="Enter City" formControlName="addr_label">
+                        </div>
+                        <div class="col-sm-6">
+                            <span> State</span> <input type="text" class="form-control" placeholder="Enter State" formControlName="addr_value">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Y" formControlName="agreed" [ngClass]="{ 'is-invalid':  formValue.agreed.errors && formValue.agreed.touched }">
+                <label for="" class="form-check-label">Agree Terms & Condition</label>
+                <div *ngIf="formValue.agreed.errors" class="text-danger">
+                    <div *ngIf="formValue.agreed.errors.required && formValue.agreed.touched">
+                        Please check the check box
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group ">
+            <div class="col-sm-6 text-center regbtn ">
+                <button type="submit" class="btn btn-warning text-center" [disabled]="!regForm.valid">Register</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </form>
+
+    <p class="text white">Value: {{ regForm.value | json }}</p>
+
+
+
+
+
+</div>

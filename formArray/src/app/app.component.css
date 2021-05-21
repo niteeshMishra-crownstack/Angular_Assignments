@@ -1,0 +1,20 @@
+label,
+span {
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.formH {
+    color: #5eb443;
+}
+
+.regbtn {
+    width: 100%;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+input {
+    background: whitesmoke
+}

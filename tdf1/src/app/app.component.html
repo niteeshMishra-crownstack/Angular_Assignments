@@ -1,0 +1,54 @@
+<div class="container">
+    <div>
+        <h1>Template Driven Form</h1>
+        <form #userForm="ngForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="userModel.name" required>
+                <div class="alert alert-danger" [hidden]="name.valid">Name is required</div>
+            </div>
+            <div class="form-group">
+                <label for="alterEgo">Email</label>
+
+                <input type="text" class="form-control" name="email" #email="ngModel" [(ngModel)]="userModel.email" required>
+                <div class="alert alert-danger" [hidden]="email.valid">Email is required</div>
+            </div>
+            <div class="form-group">
+                <label for="power">Phone Number</label>
+                <input type="text" class="form-control" name="phNumber" #phNumber="ngModel" [(ngModel)]="userModel.phone" required>
+                <div class="alert alert-danger" [hidden]="phNumber.valid">Phone Number is required</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Name</div>
+        <div class="col-md-10 pull-left">{{ userModel.name }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Email</div>
+        <div class="col-md-10 pull-left">{{ userModel.email }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Phone</div>
+        <div class="col-md-10 pull-left">{{ userModel.phone }}</div>
+    </div>
+
+    <!-- <div *ngIf="submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+        <div class="col-md-2">Name</div>
+        <div class="col-md-10 pull-left">{{ userModel.name }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Alter Ego</div>
+        <div class="col-md-10 pull-left">{{ userModel.email }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Power</div>
+        <div class="col-md-10 pull-left">{{ userModel.phone }}</div>
+    </div>
+    <br />
+
+     </div>
+</div> -->
